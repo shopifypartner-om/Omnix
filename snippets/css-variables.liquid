@@ -14,5 +14,8 @@
     --color-background: {{ settings.background_color }};
     --color-foreground: {{ settings.foreground_color }};
     --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+    --color-primary: {{ settings.primary_color | default: "#ffffff" }};
+    --color-secondary: {{ settings.secondary_color | default: "#0000ff" }};
+    --color-text: {{ settings.text_color | default: "#111111" }};
   }
 {% endstyle %}
