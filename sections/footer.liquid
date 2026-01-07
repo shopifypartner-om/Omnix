@@ -1,56 +1,120 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+<footer class="footer template-footer">
+  <div class="footer__container">
+    {% for block in section.blocks %}
+      <div class="footer-block-add-menu" {{ block.shopify_attributes }}>
+        {% case block.type %}
+          {% when 'footer-logo' %}
+            <div class="footer-brand-block">
+              {% if block.settings.footer_logo != blank %}
+                <div class="footer-brand-logo">
+                  <img
+                    src="{{ block.settings.footer_logo | image_url: width: 30 }}"
+                    width="{{ block.settings.footer_logo.width }}"
+                    height="{{ block.settings.footer_logo.height }}"
+                    alt="{{ block.settings.footer_brand_title | escape }}"
+                    loading="lazy"
+                  >
+                </div>
+              {% endif %}
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
+              {% if block.settings.footer_brand_title != blank %}
+                <h3 class="footer-brand-title">
+                  {{ block.settings.footer_brand_title }}
+                </h3>
+              {% endif %}
+
+              <div class="footer-brand-social">
+                {% if settings.social_facebook != blank %}
+                  <a class="footer-social-link" href="{{ settings.social_facebook }}"> Facebook </a>
+                {% endif %}
+
+                {% if settings.social_instagram != blank %}
+                  <a class="footer-social-link" href="{{ settings.social_instagram }}"> Instagram </a>
+                {% endif %}
+
+                {% if settings.social_twitter != blank %}
+                  <a class="footer-social-link" href="{{ settings.social_twitter }}"> Twitter </a>
+                {% endif %}
+              </div>
+            </div>
+
+          {% when 'footer-menu' %}
+            <div class="footer-multiple-link">
+              <h3 class="footer-menu-template-heading">
+                {{ block.settings.footer_menu_heading }}
+              </h3>
+
+              {% if block.settings.subheading != blank %}
+                <p class="footer-menu-subheading">
+                  {{ block.settings.footer_menu_subheading }}
+                </p>
+              {% endif %}
+
+              {% if block.settings.footer_menu_select != blank %}
+                <ul class="footer__links">
+                  {% for link in linklists[block.settings.footer_menu_select].links %}
+                    <li class="footer__link-item">
+                      <a href="{{ link.url }}">
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+        {% endcase %}
+      </div>
     {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
   </div>
 </footer>
 
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
-  "name": "t:general.footer",
-  "settings": [
+  "name": "Footer",
+  "max_blocks": 6,
+  "settings": [],
+  "blocks": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "type": "footer-menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_menu_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "footer_menu_subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu_select",
+          "label": "Menu"
+        }
+      ]
     },
+      {
+      "type": "footer-logo",
+      "name": "logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "footer_brand_title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
     {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
+      "name": "Footer"
     }
   ]
 }
