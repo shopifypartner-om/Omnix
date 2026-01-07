@@ -1,3 +1,5 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
 <footer class="footer template-footer">
   <div class="footer__container">
     {% for block in section.blocks %}
@@ -20,6 +22,11 @@
               {% if block.settings.footer_brand_title != blank %}
                 <h3 class="footer-brand-title">
                   {{ block.settings.footer_brand_title }}
+                </h3>
+              {% endif %}
+              {% if block.settings.footer_brand_description != blank %}
+                <h3 class="footer-brand-description">
+                  {{ block.settings.footer_brand_description }}
                 </h3>
               {% endif %}
 
@@ -62,6 +69,72 @@
                 </ul>
               {% endif %}
             </div>
+
+          {% when 'social-icons' %}
+            <div class="footer-social-icons">
+              {% if block.settings.social_heading != blank %}
+                <h3 class="footer-social-heading">
+                  {{ block.settings.social_heading }}
+                </h3>
+              {% endif %}
+
+              <div class="footer-social-icons-list">
+                {% assign target = block.settings.open_new_tab | default: false %}
+                {% assign target_attr = target | if: '_blank', '' %}
+
+                {% if settings.social_facebook != blank %}
+                  <a
+                    class="footer-social-icon"
+                    href="{{ settings.social_facebook }}"
+                    {% if block.settings.open_new_tab %}
+                      target="_blank" rel="noopener"
+                    {% endif %}
+                    aria-label="Facebook"
+                  >
+                    Facebook
+                  </a>
+                {% endif %}
+
+                {% if settings.social_instagram != blank %}
+                  <a
+                    class="footer-social-icon"
+                    href="{{ settings.social_instagram }}"
+                    {% if block.settings.open_new_tab %}
+                      target="_blank" rel="noopener"
+                    {% endif %}
+                    aria-label="Instagram"
+                  >
+                    Instagram
+                  </a>
+                {% endif %}
+
+                {% if settings.social_twitter != blank %}
+                  <a
+                    class="footer-social-icon"
+                    href="{{ settings.social_twitter }}"
+                    {% if block.settings.open_new_tab %}
+                      target="_blank" rel="noopener"
+                    {% endif %}
+                    aria-label="Twitter"
+                  >
+                    Twitter
+                  </a>
+                {% endif %}
+
+                {% if settings.social_youtube != blank %}
+                  <a
+                    class="footer-social-icon"
+                    href="{{ settings.social_youtube }}"
+                    {% if block.settings.open_new_tab %}
+                      target="_blank" rel="noopener"
+                    {% endif %}
+                    aria-label="YouTube"
+                  >
+                    YouTube
+                  </a>
+                {% endif %}
+              </div>
+            </div>
         {% endcase %}
       </div>
     {% endfor %}
@@ -100,17 +173,40 @@
       "name": "logo",
       "settings": [
         {
+          "type": "text",
+          "id": "footer_brand_title",
+          "label": "Title"
+        },
+        {
           "type": "image_picker",
           "id": "footer_logo",
           "label": "Logo"
         },
         {
-          "type": "text",
-          "id": "footer_brand_title",
-          "label": "Title"
+          "type": "richtext",
+          "id": "footer_brand_description",
+          "label": "Description"
         }
       ]
+    },
+    {
+    "type": "social-icons",
+    "name": "Social Icons",
+    "settings":    [
+     {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Heading",
+      "default": "Follow us"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab",
+      "label": "Open links in new tab",
+      "default": true
     }
+        ]
+        }
   ],
   "presets": [
     {
