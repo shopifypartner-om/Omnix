@@ -1,5 +1,3 @@
- 
-//  Mobile Menu Drawer Script
  const toggle = document.querySelector('.menu-toggle');
   const drawer = document.getElementById('mobileDrawer');
   const overlay = document.getElementById('drawerOverlay');
