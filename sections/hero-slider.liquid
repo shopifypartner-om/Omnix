@@ -108,7 +108,10 @@
   background: var(--dot-color);
 }
 
-
+/* While dragging */
+[data-hero-slider]:active {
+  cursor: grab;
+}
 
 </style>    
 
@@ -137,7 +140,7 @@
 
           {% if block.settings.button_label != blank %}
             <a href="{{ block.settings.button_link }}"
-               class="button button--primary">
+               class="button">
               {{ block.settings.button_label }}
             </a>
           {% endif %}
@@ -163,9 +166,10 @@
   </div>
 </section>
 
-<script>
 
- document.addEventListener('DOMContentLoaded', () => {
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-hero-slider]').forEach(slider => {
 
     const slides = slider.querySelectorAll('[data-slide]');
@@ -182,15 +186,50 @@
       index = i;
     };
 
+    /* ---------- DOT CLICK ---------- */
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         showSlide(parseInt(dot.dataset.dot));
       });
     });
 
+    /* ---------- DRAG / SWIPE ---------- */
+    let startX = 0;
+    let isDragging = false;
+
+    const startDrag = (x) => {
+      startX = x;
+      isDragging = true;
+    };
+
+    const endDrag = (x) => {
+      if (!isDragging) return;
+      const diff = startX - x;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          showSlide((index + 1) % slides.length); // next
+        } else {
+          showSlide((index - 1 + slides.length) % slides.length); // prev
+        }
+      }
+      isDragging = false;
+    };
+
+    /* Mouse */
+    slider.addEventListener('mousedown', e => startDrag(e.clientX));
+    slider.addEventListener('mouseup', e => endDrag(e.clientX));
+    slider.addEventListener('mouseleave', () => isDragging = false);
+
+    /* Touch */
+    slider.addEventListener('touchstart', e => startDrag(e.touches[0].clientX));
+    slider.addEventListener('touchend', e => endDrag(e.changedTouches[0].clientX));
+
   });
 });
 </script>
+
+
 
 
 {% schema %}
