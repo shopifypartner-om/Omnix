@@ -41,7 +41,7 @@
       "name": "Top announcement bar",
       "settings": {
         "show_on_mobile": true,
-        "font_size": 13,
+        "font_size": 16,
         "store_name": "",
         "announcement_label": "Main Website Store - Demo Store View2",
         "bar_height": 40,
