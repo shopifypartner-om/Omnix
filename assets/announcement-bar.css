@@ -112,10 +112,6 @@
 
 /* MOBILE VIEW */
 @media screen and (max-width: 749px) {
-  .bar-wrapper {
-    padding: 0 15px;
-    justify-content: flex-end;
-  }
   .top-announcement-bar__left {
     display: none;
   }

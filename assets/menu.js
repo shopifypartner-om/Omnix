@@ -1,24 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.menu-toggle');
-  const drawer = document.getElementById('mobileDrawer');
-  const overlay = document.getElementById('drawerOverlay');
-  const closeBtn = document.querySelector('.drawer-close');
+document.addEventListener('DOMContentLoaded', function() {
+  const openBtn = document.getElementById('menu-open');
+  const closeBtn = document.getElementById('menu-close');
+  const drawer = document.getElementById('mobile-menu-drawer');
 
-  if (!toggle || !drawer || !overlay || !closeBtn) return;
-
-  function openDrawer() {
-    drawer.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  if(openBtn) {
+    openBtn.addEventListener('click', () => drawer.classList.add('active'));
   }
-
-  function closeDrawer() {
-    drawer.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
+  if(closeBtn) {
+    closeBtn.addEventListener('click', () => drawer.classList.remove('active'));
   }
-
-  toggle.addEventListener('click', openDrawer);
-  closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
 });
