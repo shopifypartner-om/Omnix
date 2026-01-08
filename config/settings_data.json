@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "layout_type": "full",
+    "layout_type": "boxed",
     "sections": {
       "footer": {
         "type": "footer",
