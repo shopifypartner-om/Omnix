@@ -22,22 +22,38 @@
       }
     ]
   },
-  {
-    "name": "t:general.layout",
-    "settings": [
-      {
-        "type": "range",
-        "id": "page_width",
-        "min": 1000,
-        "max": 1600,
-        "step": 100,
-        "default": 1200,
-        "unit": "px",
-        "label": "t:labels.page_width"
-        
-      }
-    ]
-  },
+ {
+  "name": "t:general.layout",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout_type",
+      "label": "Layout type",
+      "default": "boxed",
+      "options": [
+        {
+          "value": "boxed",
+          "label": "Boxed"
+        },
+        {
+          "value": "full",
+          "label": "Full width"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "default": 1200,
+      "unit": "px",
+      "label": "Page width",
+      "visible_if": "{{ settings.layout_type == 'boxed' }}"
+    }
+  ]
+},
   {
     "name": "t:general.colors",
     "settings": [

@@ -1,0 +1,150 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  :root {
+    --announcement-bar-height: {{ section.settings.bar_height }}px;
+    --announcement-bar-bg: {{ section.settings.bg_color }};
+    --announcement-bar-text: {{ section.settings.text_color }};
+      --announcement-bar-font-size: {{ section.settings.font_size }}px;
+  }
+
+  {%- if section.settings.show_on_mobile == false -%}
+    @media screen and (max-width: 749px) {
+      .top-announcement-bar { display: none; }
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<div class="top-announcement-bar">
+  <div class="bar-wrapper page-width">
+    
+    <div class="top-announcement-bar__left">
+      {{ section.settings.store_name }}
+    </div>
+
+    <div class="top-announcement-bar__right">
+      <div class="dropdown-container">
+        <button class="bar-link" data-open="announcement-popup">
+          {{ section.settings.announcement_label }}
+        </button>
+
+        <div class="popup" id="announcement-popup">
+          <div class="popup-overlay"></div>
+          <div class="popup-panel">
+            <div class="popup-content">
+              {% for block in section.blocks %}
+                <div class="popup-item {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
+                  {{ block.settings.text }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="bar-separator">|</span>
+
+      <div class="dropdown-container">
+        <button class="bar-link" data-open="currency-popup">
+          {{ localization.country.currency.symbol }} {{ localization.country.currency.iso_code }}
+        </button>
+
+        <div class="popup" id="currency-popup">
+          <div class="popup-overlay"></div>
+          <div class="popup-panel">
+            <div class="popup-content">
+              <form method="post" action="/localization" id="localization_form">
+                {% for country in localization.available_countries %}
+                  <button type="submit" name="country_code" value="{{ country.iso_code }}" 
+                    class="popup-item {% if country.iso_code == localization.country.iso_code %}is-active{% endif %}">
+                    {{ country.name }} — {{ country.currency.iso_code }}
+                  </button>
+                {% endfor %}
+                <input type="hidden" name="return_to" value="{{ request.path }}">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'announcement-bar.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Top announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on mobile",
+      "default": true
+    },
+    {
+  "type": "number",
+  "id": "font_size",
+  "label": "Text font size (px)",
+  "default": 13
+    },
+    {
+      "type": "text",
+      "id": "store_name",
+      "label": "Left text",
+      "default": "Main Website Store - Demo Store View"
+    },
+    {
+      "type": "text",
+      "id": "announcement_label",
+      "label": "Announcement label",
+      "default": "Announcements"
+    },
+    {
+      "type": "range",
+      "id": "bar_height",
+      "min": 30,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Bar height",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Flat 20% off on all items"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top announcement bar",
+      "blocks": [
+        { "type": "announcement" }
+      ]
+    }
+  ]
+}
+{% endschema %}
