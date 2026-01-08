@@ -1,7 +1,10 @@
- const toggle = document.querySelector('.menu-toggle');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
   const drawer = document.getElementById('mobileDrawer');
   const overlay = document.getElementById('drawerOverlay');
   const closeBtn = document.querySelector('.drawer-close');
+
+  if (!toggle || !drawer || !overlay || !closeBtn) return;
 
   function openDrawer() {
     drawer.classList.add('active');
@@ -18,3 +21,4 @@
   toggle.addEventListener('click', openDrawer);
   closeBtn.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
+});

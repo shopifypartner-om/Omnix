@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}">
 <script src="{{ 'menu.js' | asset_url }}" defer></script>
-<header>
+<header class="header page-width">
     <button class="menu-toggle" aria-label="Open menu">
     ☰
   </button>
@@ -33,7 +33,7 @@
 </header>
 
 <!-- Mobile Drawer -->
-<div class="mobile-drawer" id="mobileDrawer">
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
   <button class="drawer-close" aria-label="Close menu">✕</button>
 
   <nav class="mobile-menu">
