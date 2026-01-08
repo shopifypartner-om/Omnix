@@ -29,6 +29,53 @@
     --color-fadecolor: {{ settings.fadecolor | default: "#3b82f680" }};
     --color-text-secondary: {{ settings.text_color_secondary | default: "#111111" }};
     --color-disabled: {{ settings.color_disabled | default: "#E8E8E8" }};
+
+    /** * Buttons **/
+    --buttons-border-thickness: {{ settings.buttons_border_thickness | default: 1 }}px;
+    --buttons-border-opacity: {{ settings.buttons_border_opacity | default: 100 | divided_by: 100.0 }};
+    --buttons-radius: {{ settings.buttons_radius | default: 0 }}px;
+
+    --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | default: 0 | divided_by: 100.0 }};
+    --buttons-shadow-x: {{ settings.buttons_shadow_horizontal_offset | default: 0 }}px;
+    --buttons-shadow-y: {{ settings.buttons_shadow_vertical_offset | default: 0 }}px;
+    --buttons-shadow-blur: {{ settings.buttons_shadow_blur | default: 0 }}px;
+
+    /** * Inputs **/
+    --inputs-border-thickness: {{ settings.inputs_border_thickness | default: 1 }}px;
+    --inputs-border-opacity: {{ settings.inputs_border_opacity | default: 55 | divided_by: 100.0 }};
+    --inputs-radius: {{ settings.inputs_radius | default: 0 }}px;
+
+    --inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | default: 0 | divided_by: 100.0 }};
+    --inputs-shadow-x: {{ settings.inputs_shadow_horizontal_offset | default: 0 }}px;
+    --inputs-shadow-y: {{ settings.inputs_shadow_vertical_offset | default: 0 }}px;
+    --inputs-shadow-blur: {{ settings.inputs_shadow_blur | default: 0 }}px;
+
+    /** * Product Cards **/
+
+    --card-image-padding: {{ settings.card_image_padding | default: 0 }}px;
+    --card-text-alignment: {{ settings.card_text_alignment | default: "left" }};
+
+    --card-border-thickness: {{ settings.card_border_thickness | default: 0 }}px;
+    --card-border-opacity: {{ settings.card_border_opacity | default: 0 | divided_by: 100.0 }};
+    --card-radius: {{ settings.card_corner_radius | default: 0 }}px;
+
+    --card-shadow-opacity: {{ settings.card_shadow_opacity | default: 10 | divided_by: 100.0 }};
+    --card-shadow-x: {{ settings.card_shadow_horizontal_offset | default: 0 }}px;
+    --card-shadow-y: {{ settings.card_shadow_vertical_offset | default: 0 }}px;
+    --card-shadow-blur: {{ settings.card_shadow_blur | default: 0 }}px;
+
+    /** * Collection cards **/
+    --collection-card-image-padding: {{ settings.collection_card_image_padding | default: 0 }}px;
+    --collection-card-text-alignment: {{ settings.collection_card_text_alignment | default: "left" }};
+
+    --collection-card-border-thickness: {{ settings.collection_card_border_thickness | default: 0 }}px;
+    --collection-card-border-opacity: {{ settings.collection_card_border_opacity | default: 0 | divided_by: 100.0 }};
+    --collection-card-radius: {{ settings.collection_card_corner_radius | default: 0 }}px;
+
+    --collection-card-shadow-opacity: {{ settings.collection_card_shadow_opacity | default: 10 | divided_by: 100.0 }};
+    --collection-card-shadow-x: {{ settings.collection_card_shadow_horizontal_offset | default: 0 }}px;
+    --collection-card-shadow-y: {{ settings.collection_card_shadow_vertical_offset | default: 0 }}px;
+    --collection-card-shadow-blur: {{ settings.collection_card_shadow_blur | default: 0 }}px;
  
   }
 {% endstyle %}
