@@ -1,0 +1,150 @@
+<style>
+  .header-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+  .icon-link {
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .icon-link:hover {
+    color: #0066cc;
+  }
+
+  .icon-link svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .icon-text {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .cart-count-bubble {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    .header-icons {
+      gap: 12px;
+    }
+
+    .icon-text {
+      display: none;
+    }
+
+    .icon-link {
+      gap: 0;
+      padding: 8px;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .icon-link svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .header-icons {
+      gap: 8px;
+    }
+
+    .icon-link {
+      padding: 6px;
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    .icon-link svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .header-icons {
+      gap: 4px;
+    }
+
+    .icon-link {
+      padding: 4px;
+      min-width: 36px;
+      min-height: 36px;
+    }
+
+    .icon-link svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+
+<div class="header-icons">
+  {% if section.settings.show_search %}
+    <a href="{{ routes.search_url }}" class="icon-link search-pc" aria-label="Search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      {% if section.settings.search_text != blank %}
+        <span class="icon-text">{{ section.settings.search_text }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+
+  {% if shop.customer_accounts_enabled and section.settings.show_account %}
+    <a href="{{ routes.account_url }}" class="icon-link account-pc" aria-label="Account">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      {% if section.settings.account_text != blank %}
+        <span class="icon-text">{{ section.settings.account_text }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+
+  {% if section.settings.show_cart %}
+    <a href="{{ routes.cart_url }}" class="icon-link cart-icon" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+      </svg>
+      {% if cart.item_count > 0 %}
+        <span class="cart-count-bubble">{{ cart.item_count }}</span>
+      {% endif %}
+      {% if section.settings.cart_text != blank %}
+        <span class="icon-text">{{ section.settings.cart_text }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+</div>

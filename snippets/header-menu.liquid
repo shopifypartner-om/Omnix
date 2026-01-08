@@ -1,0 +1,33 @@
+<style>
+  .header-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+        flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: color 0.2s ease;
+  }
+
+  .menu-link:hover {
+    color: #0066cc;
+  }
+
+  @media screen and (max-width: 989px) {
+    .header-menu {
+      display: none;
+    }
+  }
+</style>
+
+<nav class="header-menu">
+  {% for link in section.settings.menu.links %}
+    <a href="{{ link.url }}" class="menu-link">{{ link.title }}</a>
+  {% endfor %}
+</nav>

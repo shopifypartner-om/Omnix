@@ -1,85 +1,109 @@
-<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}">
-<script src="{{ 'menu.js' | asset_url }}" defer></script>
-<header class="header page-width">
-    <button class="menu-toggle" aria-label="Open menu">
-    ☰
-  </button>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+{{ 'mobile-menu.css' | asset_url | stylesheet_tag }}
 
-  <div class="header__menu">
-    <nav class="menu-container desktop-menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </nav>
+<header class="site-header header--{{ section.settings.logo_position }}">
+  <div class="header-grid page-width">
+    
+    <div class="header-mobile-drawer">
+      <button type="button" class="icon-button" id="menu-open" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
 
-  </div>
+    <div class="header-logo">
+      <a href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 400 }}" 
+               alt="{{ shop.name }}" 
+               style="max-width: {{ section.settings.logo_width }}px">
+        {% else %}
+          <span class="h2">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
 
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
-    {% endif %}
+    {% render 'header-menu' %}
 
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
+    {% render 'header-icons' %}
 
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
   </div>
 </header>
 
-<!-- Mobile Drawer -->
-<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <button class="drawer-close" aria-label="Close menu">✕</button>
-
-  <nav class="mobile-menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </nav>
-</div>
-
-<div class="drawer-overlay" id="drawerOverlay"></div>
-{% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a {
-    position: relative;
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
+{% render 'mobile-menu-drawer' %}
 
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Desktop logo position",
+      "options": [
+        { "value": "middle-left", "label": "Middle left" },
+        { "value": "middle-center", "label": "Middle center" }
+      ],
+      "default": "middle-left"
+    },
     {
       "type": "link_list",
       "id": "menu",
-      "label": "t:labels.menu"
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Header Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show Search Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_text",
+      "label": "Search Text (leave blank for icon only)",
+      "default": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show Account Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "account_text",
+      "label": "Account Text (leave blank for icon only)",
+      "default": "Sign In"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show Cart Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cart_text",
+      "label": "Cart Text (leave blank for icon only)",
+      "default": "Cart"
     }
   ]
 }
