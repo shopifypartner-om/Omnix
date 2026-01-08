@@ -12,9 +12,41 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "hero_slider_PmwcLB": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_wVHyz8": {
+          "type": "slide",
+          "settings": {
+            "heading": "Shop the New Outerwear Collection",
+            "text": "hdffdjhf",
+            "button_label": "Shop now",
+            "button_link": "",
+            "image": "shopify://shop_images/generate-a-banner-image-for-hero-slider-related-to-fashion.png"
+          }
+        },
+        "slide_7TnATN": {
+          "type": "slide",
+          "settings": {
+            "heading": "Shop the New Outerwear Collection",
+            "text": "dummy text",
+            "button_label": "Shop now",
+            "button_link": "",
+            "image": "shopify://shop_images/generate-a-banner-image-for-hero-slider-related-to-fashion.png"
+          }
+        }
+      },
+      "block_order": [
+        "slide_wVHyz8",
+        "slide_7TnATN"
+      ],
+      "name": "Hero Slider",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero_slider_PmwcLB"
   ]
 }
