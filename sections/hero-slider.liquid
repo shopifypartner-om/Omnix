@@ -21,6 +21,10 @@
   background-repeat: no-repeat;
   position: relative;
 }
+
+.hero__slide.is-active {
+  display: flex;
+}
 .hero__slide::before {
   content: '';
   position: absolute;
@@ -28,16 +32,16 @@
   background: rgba(0,0,0,0.35);
 }
 
-.hero__slide.is-active {
-  display: flex;
+.hero__slide::after {
+  content: '';
+  width: 50%;
 }
 
 .hero__content {
-  width: 50%;
+  width: 50%;          /* SAME as before */
   position: relative;
   z-index: 2;
 }
-
 .hero__text {
   margin: 1.2rem 0 2rem;
   max-width: 42rem;
@@ -109,13 +113,7 @@
           {% endif %}
         </div>
 
-        <div class="hero__media">
-          {% if block.settings.image %}
-            {{ block.settings.image
-              | image_url: width: 1100
-              | image_tag: loading: 'lazy' }}
-          {% endif %}
-        </div>
+        
 
       </div>
     {% endfor %}
