@@ -6,7 +6,6 @@
 .hero__container {
   width:100%;
   margin: 0 auto;
-  padding-left:60px;
 }
 
 
@@ -41,6 +40,7 @@
   width: 50%;          /* SAME as before */
   position: relative;
   z-index: 2;
+  padding-left: 50px;
 }
 .hero__text {
   margin: 1.2rem 0 2rem;
@@ -65,21 +65,49 @@
 
 /* Navigation */
 .hero__nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding-bottom: 2rem;
-}
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 2rem;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+} 
 
-.hero__nav-btn {
-  width: 44px;
-  height: 44px;
+.hero__dot {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid rgb(var(--color-foreground));
+  border: 1.5px solid transparent; /* default no border */
   background: transparent;
-  color: rgb(var(--color-foreground));
+  position: relative;
   cursor: pointer;
 }
+
+
+/* inner dot */
+.hero__dot::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #999;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ACTIVE STATE (image ke acc color) */
+.hero__dot.is-active {
+  border-color: var(--dot-color);
+}
+
+.hero__dot.is-active::after {
+  background: var(--dot-color);
+}
+
 
 
 </style>    
@@ -122,45 +150,48 @@
 
     <!-- Navigation buttons -->
     <div class="hero__nav">
-      <button class="hero__nav-btn" data-prev>
-        ←
-      </button>
-
-      <button class="hero__nav-btn" data-next>
-        →
-      </button>
+    {% for block in section.blocks %}
+    <button
+      class="hero__dot {% if forloop.first %}is-active{% endif %}"
+      data-dot="{{ forloop.index0 }}"
+      style="--dot-color: {{ block.settings.dot_color | default: '#000' }}">
+    </button>
+    {% endfor %}
     </div>
+
 
   </div>
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-hero-slider]').forEach(slider => {
-    const slides = slider.querySelectorAll('[data-slide]');
-    const nextBtn = slider.querySelector('[data-next]');
-    const prevBtn = slider.querySelector('[data-prev]');
 
+ document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-hero-slider]').forEach(slider => {
+
+    const slides = slider.querySelectorAll('[data-slide]');
+    const dots = slider.querySelectorAll('[data-dot]');
     let index = 0;
 
     const showSlide = (i) => {
       slides.forEach(slide => slide.classList.remove('is-active'));
+      dots.forEach(dot => dot.classList.remove('is-active'));
+
       slides[i].classList.add('is-active');
+      dots[i].classList.add('is-active');
+
+      index = i;
     };
 
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % slides.length;
-      showSlide(index);
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showSlide(parseInt(dot.dataset.dot));
+      });
     });
 
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + slides.length) % slides.length;
-      showSlide(index);
-    });
   });
 });
-
 </script>
+
 
 {% schema %}
 {
