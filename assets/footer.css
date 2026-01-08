@@ -1,0 +1,142 @@
+.template-footer {
+  background-color: #423131;
+  padding: 80px 0 40px;
+  color: black;
+  font-family: inherit;
+  margin-top: 20px;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 168px;
+  max-width: 1280px;
+  margin: 0 auto 74px;
+  padding: 0 24px;
+}
+
+.footer-block-add-menu {
+  flex: 1;
+}
+
+.footer-brand-block {
+  max-width: 320px;
+}
+
+.footer-brand-logo img {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer-brand-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer-brand-description {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.footer-brand-social {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social-link {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-social-link:hover {
+  opacity: 1;
+}
+
+.footer-multiple-link {
+  min-width: 180px;
+}
+
+.footer-menu-template-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer-menu-subheading {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__link-item {
+  margin-bottom: 10px;
+}
+
+.footer__link-item a {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer__link-item a:hover {
+  opacity: 1;
+}
+
+.footer-social-icons {
+  min-width: 180px;
+}
+
+.footer-social-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-social-icons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-social-icon {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .footer__container {
+    gap: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .footer-block-add-menu {
+    width: 100%;
+  }
+}

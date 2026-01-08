@@ -15,11 +15,24 @@
       --page-width: 100%;
     {% endif %}
     --page-margin: {{ settings.min_page_margin }}px;
-    --color-background: {{ settings.background_color }};
     --color-foreground: {{ settings.foreground_color }};
     --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+
+
+
+    /** * Custom Colors with Defaults
+     * These colors can be customized in the theme settings.
+     * If not set, they will fall back to the specified default values.
+     **/
+
+    --color-background: {{ settings.background_color }};
     --color-primary: {{ settings.primary_color | default: "#ffffff" }};
     --color-secondary: {{ settings.secondary_color | default: "#0000ff" }};
     --color-text: {{ settings.text_color | default: "#111111" }};
+    
+    --color-fadecolor: {{ settings.fadecolor | default: "#3b82f680" }};
+    --color-text-secondary: {{ settings.text_color_secondary | default: "#111111" }};
+    --color-disabled: {{ settings.color_disabled | default: "#E8E8E8" }};
+ 
   }
 {% endstyle %}

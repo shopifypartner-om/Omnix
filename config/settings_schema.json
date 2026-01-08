@@ -88,6 +88,24 @@
         "label": "t:labels.text_color"
       },
       {
+        "type": "color",
+        "id": "fadecolor",
+        "default": "#3b82f680",
+        "label": "t:labels.fadecolor"
+      },
+      {
+        "type": "color",
+        "id": "text_color_secondary",
+        "default": "#111111",
+        "label": "t:labels.text_color_secondary"
+      },
+      {
+        "type": "color",
+        "id": "color_disabled",
+        "default": "#E8E8E8",
+        "label": "t:labels.color_disabled"
+      },
+      {
         "type": "range",
         "id": "input_corner_radius",
         "min": 0,
