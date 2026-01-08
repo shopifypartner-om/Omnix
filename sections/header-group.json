@@ -11,12 +11,53 @@
   "type": "header",
   "name": "t:general.header",
   "sections": {
+    "announcement_bar_HtTFBD": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_Ldhxem": {
+          "type": "announcement",
+          "settings": {
+            "text": "Second Store - Second Store View2"
+          }
+        },
+        "announcement_pkVYdt": {
+          "type": "announcement",
+          "settings": {
+            "text": "Main Website Store - Default Store View"
+          }
+        },
+        "announcement_iFT9p9": {
+          "type": "announcement",
+          "settings": {
+            "text": "Second Store - Second Store V1"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_Ldhxem",
+        "announcement_pkVYdt",
+        "announcement_iFT9p9"
+      ],
+      "name": "Top announcement bar",
+      "settings": {
+        "show_on_mobile": true,
+        "font_size": 16,
+        "store_name": "",
+        "announcement_label": "Main Website Store - Demo Store View2",
+        "bar_height": 40,
+        "bg_color": "#f7f7f7",
+        "text_color": "#333333"
+      }
+    },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "menu": "main-menu-1"
+      }
     }
   },
   "order": [
+    "announcement_bar_HtTFBD",
     "header"
   ]
 }

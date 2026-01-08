@@ -61,8 +61,63 @@
     "fadecolor": "Fade Color",
     "text_color_secondary": "Secondary Text Color",
     "color_disabled": "Disabled Color",
-    
-    "text": "Text"
+    "text": "Text",
+    "buttons": {
+      "name": "Buttons"
+    },
+    "inputs": {
+      "name": "Inputs"
+    },
+    "social-media": {
+      "name": "Social media"
+    },
+    "product": {
+      "cards": {
+        "name": "Product cards"
+      }
+    },
+    "collection_cards": {
+      "name": "Collection cards"
+    },
+    "header__border": {
+      "content": "Border"
+    },
+    "header__shadow": {
+      "content": "Shadow"
+    },
+    "thickness": {
+      "label": "Thickness"
+    },
+    "opacity": {
+      "label": "Opacity"
+    },
+    "corner_radius": {
+      "label": "Corner radius"
+    },
+    "horizontal_offset": {
+      "label": "Horizontal offset"
+    },
+    "vertical_offset": {
+      "label": "Vertical offset"
+    },
+    "blur": {
+      "label": "Blur"
+    },
+    "image_padding": {
+      "label": "Image padding"
+    },
+    "text_alignment": {
+      "label": "Text alignment",
+      "options__1": {
+        "label": "Left"
+      },
+      "options__2": {
+        "label": "Center"
+      },
+      "options__3": {
+        "label": "Right"
+      }
+    }
   },
   "options": {
     "alignment": {
@@ -86,6 +141,20 @@
       "title": "Title",
       "subtitle": "Subtitle",
       "normal": "Normal text"
+    }
+  },
+  "social-media": {
+    "social_facebook_link": {
+      "label": "Facebook link",
+      "info": "Enter your Facebook profile URL"
     },
+    "social_instagram_link": {
+      "label": "Instagram link",
+      "info": "Enter your Instagram profile URL"
+    },
+    "social_twitter_link": {
+      "label": "Twitter/X link",
+      "info": "Enter your Twitter/X profile URL"
+    }
   }
 }

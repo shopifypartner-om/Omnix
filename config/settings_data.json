@@ -9,31 +9,10 @@
  */
 {
   "current": {
+    "layout_type": "full",
     "sections": {
       "footer": {
         "type": "footer",
-        "blocks": {
-          "footer_logo_yrCMre": {
-            "type": "footer-logo",
-            "settings": {
-              "footer_brand_title": "Omnix",
-              "footer_logo": "shopify://shop_images/logo-type-image.png",
-              "footer_brand_description": ""
-            }
-          },
-          "footer_menu_83keCF": {
-            "type": "footer-menu",
-            "settings": {
-              "footer_menu_heading": "Privacy Policy",
-              "footer_menu_subheading": "",
-              "footer_menu_select": "customer-account-main-menu"
-            }
-          }
-        },
-        "block_order": [
-          "footer_logo_yrCMre",
-          "footer_menu_83keCF"
-        ],
         "settings": {}
       }
     },
