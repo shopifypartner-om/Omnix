@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "layout_type": "full",
+    "layout_type": "boxed",
+    "page_width": 1400,
     "sections": {
       "footer": {
         "type": "footer",
