@@ -94,7 +94,7 @@
   .drawer-footer {
     border-top: 1px solid #e0e0e0;
     padding: 16px 20px;
-    background-color: white;
+   
     margin-top: auto;
   }
 
@@ -118,17 +118,9 @@
     cursor: pointer;
   }
 
-  .drawer-footer-divider {
-    height: 1px;
-    background-color: #efefef;
-    margin: 12px 0;
-  }
 
-  .drawer-footer-store-info {
-    font-size: 12px;
-    color: #999;
-    padding: 8px 0;
-  }
+
+ 
 </style>
 
 <div id="mobile-menu-drawer" class="menu-drawer">
@@ -145,13 +137,9 @@
     </nav>
 
     <div class="drawer-footer">
-      <div class="drawer-footer-store-info">
-        <strong>{{ shop.name }}</strong> - Demo Store
-        <br>
-        <span style="color: #0066cc;">$ USD</span>
-      </div>
+      
 
-      <div class="drawer-footer-divider"></div>
+   
 
       <a href="{{ routes.account_url }}" class="drawer-footer-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

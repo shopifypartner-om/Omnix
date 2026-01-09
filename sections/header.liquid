@@ -1,6 +1,6 @@
 {{ 'mobile-menu.css' | asset_url | stylesheet_tag }}
 
-<header class="site-header header--{{ section.settings.logo_position }}">
+<header class="site-header header--{{ section.settings.logo_position }}" data-sticky="{{ section.settings.sticky_header }}">
   <div class="header-grid page-width">
     
     <div class="header-mobile-drawer">
@@ -104,6 +104,16 @@
       "id": "cart_text",
       "label": "Cart Text (leave blank for icon only)",
       "default": "Cart"
+    },
+    {
+      "type": "header",
+      "content": "Header Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Make Header Sticky",
+      "default": false
     }
   ]
 }
