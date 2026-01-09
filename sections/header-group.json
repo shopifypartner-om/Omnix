@@ -52,7 +52,16 @@
     "header": {
       "type": "header",
       "settings": {
-        "menu": "main-menu-1"
+        "logo": "shopify://shop_images/VeniaLogo-n77.jpg",
+        "logo_width": 170,
+        "logo_position": "middle-left",
+        "menu": "main-menu-1",
+        "show_search": true,
+        "search_text": "Search",
+        "show_account": true,
+        "account_text": "Sign In",
+        "show_cart": true,
+        "cart_text": "Cart"
       }
     }
   },
