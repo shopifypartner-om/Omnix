@@ -85,15 +85,15 @@
     padding: 12px 35px;
     font-size: 13px;
     background: transparent;
-    color: #2948ff;
-    border: 1.5px solid #2948ff;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
     border-radius: 50px;
   }
 
   .iwt-button-group .btn-custom:hover {
-    background-color: #2948ff;
+    background-color: var(--color-secondary);
     color: #ffffff;
-    border-color: #2948ff;
+    border-color: var(--color-secondary);
   }
   @media screen and (max-width: 767px) {
     .iwt-content {
