@@ -67,7 +67,7 @@
 
 .hero-slide-button {
   display: inline-block;
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   color: #fff;
   padding: 16px 45px;
   border-radius: 50px;
