@@ -1,33 +1,133 @@
 <style>
-  .header-menu {
+
+  .header-menu-wrapper {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+  }
+
+  .header-menu-item {
+    position: relative;
+    list-style: none;
+  }
+
+ 
+  .menu-link-item {
     display: flex;
     align-items: center;
-    gap: 0;
-        flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .menu-link {
+    gap: 6px;
+    padding: 12px 20px;
     text-decoration: none;
-    color: #333;
+    color: rgb(var(--color-foreground, 51, 51, 51));
+    font-size: 16px;
     font-weight: 500;
-    padding: 8px 15px;
-    transition: color 0.2s ease;
+    cursor: pointer;
   }
 
-  .menu-link:hover {
-    color: #0066cc;
+
+  .header-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    background: #ffffff;
+    padding: 10px 0;
+    list-style: none;
+    z-index: 99;
+    display: none;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
   }
+
+
+  .header-menu-item:hover > .header-submenu {
+    display: block;
+    transform: translateY(0);
+    
+  }
+
+
+  .header-submenu .header-menu-item {
+    position: relative;
+  }
+
+  .header-submenu .header-submenu {
+    top: 0;
+    left: 100%; 
+    margin-left: 1px;
+  }
+
+  .header-submenu .menu-link-item {
+    padding: 8px 20px;
+    font-size: 16px;
+    justify-content: space-between;
+  }
+
+
+
+ 
+  .icon-caret {
+    width: 10px;
+    height: 6px;
+    transition: transform 0.3s ease;
+  }
+
+  .header-menu-item:hover > .menu-link-item .icon-caret {
+    transform: rotate(180deg);
+  }
+
 
   @media screen and (max-width: 989px) {
-    .header-menu {
-      display: none;
-    }
+    .header-menu-wrapper { display: none; }
   }
 </style>
 
-<nav class="header-menu">
-  {% for link in section.settings.menu.links %}
-    <a href="{{ link.url }}" class="menu-link">{{ link.title }}</a>
-  {% endfor %}
+<nav class="custom-navigation">
+  <ul class="header-menu-wrapper">
+    {%- for link in section.settings.menu.links -%}
+      <li class="header-menu-item">
+        {%- if link.links != blank -%}
+       
+          <div class="menu-link-item">
+            <span>{{ link.title | escape }}</span>
+            <svg class="icon-caret" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+
+          <ul class="header-submenu">
+            {%- for childlink in link.links -%}
+              <li class="header-menu-item">
+                {%- if childlink.links != blank -%}
+                
+                  <div class="menu-link-item">
+                    <span>{{ childlink.title | escape }}</span>
+                    <svg class="icon-caret" style="transform: rotate(-90deg)" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
+                  </div>
+                  
+                  <ul class="header-submenu">
+                    {%- for grandchildlink in childlink.links -%}
+                      <li>
+                        <a href="{{ grandchildlink.url }}" class="menu-link-item">
+                          {{ grandchildlink.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- else -%}
+                  <a href="{{ childlink.url }}" class="menu-link-item">
+                    {{ childlink.title | escape }}
+                  </a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+        
+          <a href="{{ link.url }}" class="menu-link-item">{{ link.title | escape }}</a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
 </nav>

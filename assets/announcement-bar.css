@@ -112,6 +112,9 @@
 
 /* MOBILE VIEW */
 @media screen and (max-width: 749px) {
+  .bar-wrapper{
+    height: 10px;
+  }
   .top-announcement-bar__left {
     display: none;
   }
