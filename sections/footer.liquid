@@ -1,6 +1,15 @@
 {{ 'footer.css' | asset_url | stylesheet_tag }}
 
-<footer class="footer template-footer">
+<footer
+  class="footer template-footer"
+  style="
+    --footer-bg: {{ section.settings.background_color }};
+    --footer-padding-top: {{ section.settings.padding_top }}px;
+    --footer-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --footer-margin-top: {{ section.settings.margin_top }}px;
+    --footer-margin-bottom: {{ section.settings.margin_bottom }}px;
+  "
+>
   <div class="footer__container page-width">
     {% for block in section.blocks %}
       <div class="footer-block-add-menu" {{ block.shopify_attributes }}>
@@ -30,31 +39,37 @@
               {% endif %}
               <div class="footer-brand-social">
                 {% if block.settings.social_facebook_url != blank %}
-                  <a class="footer-social-link" href="{{ block.settings.social_facebook_url }}" aria-label="Facebook" 
-                  {% if block.settings.open_new_tab %}
-                    target="blank"  rel="noopener noreferrer"
-                  {% endif %}
+                  <a
+                    class="footer-social-link"
+                    href="{{ block.settings.social_facebook_url }}"
+                    aria-label="Facebook"
+                    {% if block.settings.open_new_tab %}
+                      target="blank" rel="noopener noreferrer"
+                    {% endif %}
                   >
-                     {%- render 'icon.facebook' -%}
+                    {%- render 'icon.facebook' -%}
                     <span class="visual-hidden">{{ 'general.social.facebook' | t }}</span>
                   </a>
                 {% endif %}
 
                 {% if block.settings.social_instagram_url != blank %}
-                  <a class="footer-social-link" href="{{ block.settings.social_instagram_url }}" aria-label="Instagram" 
-                  {% if block.settings.open_new_tab %}
-                    target="blank"  rel="noopener noreferrer"
-                  {% endif %}>
-                  {%- render 'icon.instagram' -%}
+                  <a
+                    class="footer-social-link"
+                    href="{{ block.settings.social_instagram_url }}"
+                    aria-label="Instagram"
+                    {% if block.settings.open_new_tab %}
+                      target="blank" rel="noopener noreferrer"
+                    {% endif %}
+                  >
+                    {%- render 'icon.instagram' -%}
                     <span class="visual-hidden">{{ 'general.social.instagram' | t }}</span>
                   </a>
                 {% endif %}
 
                 {% if block.settings.social_twitter_url != blank %}
-                  <a class="footer-social-link" href="{{ block.settings.social_twitter_url }}"> 
-                  {%- render 'icon.twitter' -%}  
-                  <span class="visual-hidden">{{ 'general.social.twitter' | t }}
-                    </span>
+                  <a class="footer-social-link" href="{{ block.settings.social_twitter_url }}">
+                    {%- render 'icon.twitter' -%}
+                    <span class="visual-hidden">{{ 'general.social.twitter' | t }} </span>
                   </a>
                 {% endif %}
 
@@ -62,7 +77,7 @@
                   <a class="footer-social-link" href="{{ block.settings.social_youtube_url }}">
                     {%- render 'icon.youtube' -%}
                     <span class="visual-hidden">
-                    {{ 'general.social.youtube' | t }}
+                      {{ 'general.social.youtube' | t }}
                     </span>
                   </a>
                 {% endif %}
@@ -98,7 +113,7 @@
             <div class="footer-contact-info" {{ block.shopify_attributes }}>
               {% if block.settings.contact_heading != blank %}
                 <h3 class="footer-contact-heading">
-                 {{ block.settings.contact_heading }}
+                  {{ block.settings.contact_heading }}
                 </h3>
               {% endif %}
 
@@ -169,8 +184,8 @@
                       {% endif %}
                       aria-label="Facebook"
                     >
-                     {%- render 'icon.facebook' -%}
-                    <span class="visual-hidden">{{ 'general.social.facebook' | t }}</span>
+                      {%- render 'icon.facebook' -%}
+                      <span class="visual-hidden">{{ 'general.social.facebook' | t }}</span>
                     </a>
                   {% endif %}
 
@@ -183,8 +198,8 @@
                       {% endif %}
                       aria-label="Instagram"
                     >
-                    {%- render 'icon.instagram' -%}
-                    <span class="visual-hidden">{{ 'general.social.instagram' | t }}</span>
+                      {%- render 'icon.instagram' -%}
+                      <span class="visual-hidden">{{ 'general.social.instagram' | t }}</span>
                     </a>
                   {% endif %}
 
@@ -198,7 +213,7 @@
                       aria-label="Twitter"
                     >
                       {%- render 'icon.twitter' -%}
-                    <span class="visual-hidden">{{ 'general.social.twitter' | t }}</span>
+                      <span class="visual-hidden">{{ 'general.social.twitter' | t }}</span>
                     </a>
                   {% endif %}
 
@@ -212,7 +227,7 @@
                       aria-label="YouTube"
                     >
                       {%- render 'icon.youtube' -%}
-                    <span class="visual-hidden">{{ 'general.social.youtube' | t }}</span>
+                      <span class="visual-hidden">{{ 'general.social.youtube' | t }}</span>
                     </a>
                   {% endif %}
                 </div>
@@ -228,7 +243,54 @@
 {
   "name": "Footer",
   "max_blocks": 5,
-  "settings": [],
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
   "blocks": [
     {
       "type": "footer-logo",
