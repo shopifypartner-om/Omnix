@@ -1,11 +1,11 @@
 {{ 'slick.css' | asset_url | stylesheet_tag }}
-{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }} 
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 {{ 'hero-slider.css' | asset_url | stylesheet_tag }}
 
 
 <section class="hero-slider-section" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
-  <div class="hero-slider-wrapper page-width" id="HeroSlider-{{ section.id }}">
+  <div class="hero-slider-wrapper" id="HeroSlider-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="hero-slide" {{ block.shopify_attributes }}>
         <div class="hero-slide-image-wrap">
@@ -32,31 +32,38 @@
 
 
 <script>
-  const initSlider = () => {
+  function initSlider() {
     const slider = $('#HeroSlider-{{ section.id }}');
-    
-    
-    if (slider.length && !slider.hasClass('slick-initialized')) {
-      slider.slick({
-        dots: true,               
-        arrows: false,           
-        infinite: true,          
-        speed: 500,               
-        slidesToShow: 1,           
-        slidesToScroll: 1,
-        fade: false,               
-        autoplay: true,
-        autoplaySpeed: 5000,
-        pauseOnHover: false,
-        cssEase: 'ease'            
-      });
-    }
-  };
 
+    if (!slider.length || slider.hasClass('slick-initialized')) return;
 
-  window.addEventListener('load', initSlider);
+   slider.slick({
+  dots: true,
+  arrows: false,
+  infinite: false,
+  speed: 550,
+
+  slidesToShow: 1,
+  slidesToScroll: 1,
+infinite: true,
+  swipe: true,
+  touchMove: true,
+  draggable: true,
+
+  touchThreshold: 8,    
+  swipeToSlide: true,       
+  waitForAnimate: false,   
+
+  cssEase: 'ease-out',
+  adaptiveHeight: false
+});
+
+  }
+
+  document.addEventListener('DOMContentLoaded', initSlider);
   document.addEventListener('shopify:section:load', initSlider);
 </script>
+
 
 {% schema %}
 {
