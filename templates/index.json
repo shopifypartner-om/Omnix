@@ -9,12 +9,44 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "hero_slider_nNHBYD": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_Ba7BiC": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/venia-hero1.webp",
+            "image_mobile": "shopify://shop_images/download_3.png",
+            "heading": "Shop the New Outerwear Collection",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "button_text": "SHOP NOW",
+            "button_link": ""
+          }
+        },
+        "slide_fRj6q3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/venia-hero2.webp",
+            "image_mobile": "shopify://shop_images/download_4.png",
+            "heading": "Shop the New Outerwear Collection",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "button_text": "SHOP NOW",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Ba7BiC",
+        "slide_fRj6q3"
+      ],
+      "name": "Hero Slider",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
-    "main"
+    "hero_slider_nNHBYD"
   ]
 }
