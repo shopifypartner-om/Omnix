@@ -40,7 +40,7 @@
       ],
       "name": "Top announcement bar",
       "settings": {
-        "show_on_mobile": true,
+        "show_on_mobile": false,
         "font_size": 16,
         "store_name": "",
         "announcement_label": "Main Website Store - Demo Store View2",
@@ -52,8 +52,8 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo": "shopify://shop_images/VeniaLogo-n77.jpg",
-        "logo_width": 170,
+        "logo": "shopify://shop_images/New_Project_17_1_3f55c7e2-3f4d-4da6-b841-3ebee7931ea2.png",
+        "logo_width": 160,
         "logo_position": "middle-left",
         "menu": "main-menu-1",
         "show_search": true,
