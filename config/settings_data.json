@@ -14,6 +14,54 @@
     "sections": {
       "footer": {
         "type": "footer",
+        "blocks": {
+          "footer_logo_Vt8dxE": {
+            "type": "footer-logo",
+            "settings": {
+              "footer_brand_title": "OM",
+              "footer_logo": "shopify://shop_images/New_Project_17_1_2b03b365-2366-412f-b929-6731e2088da5.png",
+              "footer_brand_description": "",
+              "social_heading": "Follow us",
+              "open_new_tab": true,
+              "social_facebook_url": "#",
+              "social_instagram_url": "#",
+              "social_twitter_url": "",
+              "social_youtube_url": ""
+            }
+          },
+          "footer_menu_dPjNx8": {
+            "type": "footer-menu",
+            "settings": {
+              "footer_menu_heading": "Essential Info",
+              "footer_menu_subheading": "",
+              "footer_menu_select": "main-menu-1"
+            }
+          },
+          "footer_menu_MGmWDi": {
+            "type": "footer-menu",
+            "settings": {
+              "footer_menu_heading": "Policies",
+              "footer_menu_subheading": "",
+              "footer_menu_select": "customer-account-main-menu"
+            }
+          },
+          "footer_contact_info_X6PrFH": {
+            "type": "footer-contact-info",
+            "settings": {
+              "contact_heading": "Information",
+              "contact_name": "OMnix",
+              "contact_phone": "+91 9876678981",
+              "contact_email": "info@omnix.com",
+              "contact_address": "sector 48 Grurgram, 122001"
+            }
+          }
+        },
+        "block_order": [
+          "footer_logo_Vt8dxE",
+          "footer_menu_dPjNx8",
+          "footer_menu_MGmWDi",
+          "footer_contact_info_X6PrFH"
+        ],
         "settings": {}
       }
     },
