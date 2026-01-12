@@ -57,5 +57,14 @@
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
-  }
+  },
+  "general": {
+    "social": {
+      "facebook": "Share on Meta",
+      "instagram": "Share on insta",
+      "twitter": "Share on X",
+      "youtube": "Share on YouTube"
+    }
+    
+}
 }

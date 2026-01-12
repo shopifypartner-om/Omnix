@@ -90,10 +90,12 @@
         "role": "primary",
         "default": {
           "id": "scheme-1",
-          "settings": {
+          "settings": [
+            {
             "background": "#ffffff",
             "text": "#121212"
           }
+        ]
         }
       }
     ]

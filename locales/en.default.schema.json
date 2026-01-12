@@ -155,6 +155,10 @@
     "social_twitter_link": {
       "label": "Twitter/X link",
       "info": "Enter your Twitter/X profile URL"
+    },
+    "social_youtube_link": {
+      "label": "Youtube link",
+      "info": "Enter your youtube profile URL"
     }
   }
 }

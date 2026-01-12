@@ -27,12 +27,12 @@
     {{ content_for_header }}
   </head>
 
-  <body>
+   <body class=" {{  page.title | ' ', '-' }}">
     {% sections 'header-group' %}
 
     {{ content_for_layout }}
 
-    {% sections 'footer-group' %}
+    {% comment %} {% sections 'footer-group' %} {% endcomment %}
     {%  section 'footer' %}
   </body>
 </html>

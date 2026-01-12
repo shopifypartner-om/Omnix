@@ -1,46 +1,70 @@
 {{ 'footer.css' | asset_url | stylesheet_tag }}
 
 <footer class="footer template-footer">
-  <div class="footer__container">
+  <div class="footer__container page-width">
     {% for block in section.blocks %}
       <div class="footer-block-add-menu" {{ block.shopify_attributes }}>
         {% case block.type %}
           {% when 'footer-logo' %}
             <div class="footer-brand-block">
+              {% if block.settings.footer_brand_title != blank %}
+                <h3 class="footer-brand-title">
+                  {{ block.settings.footer_brand_title }}
+                </h3>
+              {% endif %}
+
               {% if block.settings.footer_logo != blank %}
                 <div class="footer-brand-logo">
                   <img
-                    src="{{ block.settings.footer_logo | image_url: width: 30 }}"
-                    width="{{ block.settings.footer_logo.width }}"
-                    height="{{ block.settings.footer_logo.height }}"
+                    src="{{ block.settings.footer_logo | image_url: width: 300 }}"
                     alt="{{ block.settings.footer_brand_title | escape }}"
                     loading="lazy"
                   >
                 </div>
               {% endif %}
 
-              {% if block.settings.footer_brand_title != blank %}
-                <h3 class="footer-brand-title">
-                  {{ block.settings.footer_brand_title }}
-                </h3>
-              {% endif %}
               {% if block.settings.footer_brand_description != blank %}
                 <h3 class="footer-brand-description">
                   {{ block.settings.footer_brand_description }}
                 </h3>
               {% endif %}
-
               <div class="footer-brand-social">
-                {% if settings.social_facebook != blank %}
-                  <a class="footer-social-link" href="{{ settings.social_facebook }}"> Facebook </a>
+                {% if block.settings.social_facebook_url != blank %}
+                  <a class="footer-social-link" href="{{ block.settings.social_facebook_url }}" aria-label="Facebook" 
+                  {% if block.settings.open_new_tab %}
+                    target="blank"  rel="noopener noreferrer"
+                  {% endif %}
+                  >
+                     {%- render 'icon.facebook' -%}
+                    <span class="visual-hidden">{{ 'general.social.facebook' | t }}</span>
+                  </a>
                 {% endif %}
 
-                {% if settings.social_instagram != blank %}
-                  <a class="footer-social-link" href="{{ settings.social_instagram }}"> Instagram </a>
+                {% if block.settings.social_instagram_url != blank %}
+                  <a class="footer-social-link" href="{{ block.settings.social_instagram_url }}" aria-label="Instagram" 
+                  {% if block.settings.open_new_tab %}
+                    target="blank"  rel="noopener noreferrer"
+                  {% endif %}>
+                  {%- render 'icon.instagram' -%}
+                    <span class="visual-hidden">{{ 'general.social.instagram' | t }}</span>
+                  </a>
                 {% endif %}
 
-                {% if settings.social_twitter != blank %}
-                  <a class="footer-social-link" href="{{ settings.social_twitter }}"> Twitter </a>
+                {% if block.settings.social_twitter_url != blank %}
+                  <a class="footer-social-link" href="{{ block.settings.social_twitter_url }}"> 
+                  {%- render 'icon.twitter' -%}  
+                  <span class="visual-hidden">{{ 'general.social.twitter' | t }}
+                    </span>
+                  </a>
+                {% endif %}
+
+                {% if block.settings.social_youtube_url != blank %}
+                  <a class="footer-social-link" href="{{ block.settings.social_youtube_url }}">
+                    {%- render 'icon.youtube' -%}
+                    <span class="visual-hidden">
+                    {{ 'general.social.youtube' | t }}
+                    </span>
+                  </a>
                 {% endif %}
               </div>
             </div>
@@ -51,7 +75,7 @@
                 {{ block.settings.footer_menu_heading }}
               </h3>
 
-              {% if block.settings.subheading != blank %}
+              {% if block.settings.footer_menu_subheading != blank %}
                 <p class="footer-menu-subheading">
                   {{ block.settings.footer_menu_subheading }}
                 </p>
@@ -70,71 +94,130 @@
               {% endif %}
             </div>
 
-          {% when 'social-icons' %}
-            <div class="footer-social-icons">
-              {% if block.settings.social_heading != blank %}
-                <h3 class="footer-social-heading">
-                  {{ block.settings.social_heading }}
+          {% when 'footer-contact-info' %}
+            <div class="footer-contact-info" {{ block.shopify_attributes }}>
+              {% if block.settings.contact_heading != blank %}
+                <h3 class="footer-contact-heading">
+                 {{ block.settings.contact_heading }}
                 </h3>
               {% endif %}
 
-              <div class="footer-social-icons-list">
-                {% assign target = block.settings.open_new_tab | default: false %}
-                {% assign target_attr = target | if: '_blank', '' %}
+              {% if block.settings.contact_name != blank %}
+                <p class="footer-contact-item"><span>Name:</span> {{ block.settings.contact_name }}</p>
+              {% endif %}
 
-                {% if settings.social_facebook != blank %}
-                  <a
-                    class="footer-social-icon"
-                    href="{{ settings.social_facebook }}"
-                    {% if block.settings.open_new_tab %}
-                      target="_blank" rel="noopener"
-                    {% endif %}
-                    aria-label="Facebook"
-                  >
-                    Facebook
+              {% if block.settings.contact_phone != blank %}
+                <p class="footer-contact-item">
+                  <span>Phone:</span>
+                  <a href="tel:{{ block.settings.contact_phone }}">
+                    {{ block.settings.contact_phone }}
                   </a>
-                {% endif %}
+                </p>
+              {% endif %}
 
-                {% if settings.social_instagram != blank %}
-                  <a
-                    class="footer-social-icon"
-                    href="{{ settings.social_instagram }}"
-                    {% if block.settings.open_new_tab %}
-                      target="_blank" rel="noopener"
-                    {% endif %}
-                    aria-label="Instagram"
-                  >
-                    Instagram
+              {% if block.settings.contact_email != blank %}
+                <p class="footer-contact-item">
+                  <span>Email:</span>
+                  <a href="mailto:{{ block.settings.contact_email }}">
+                    {{ block.settings.contact_email }}
                   </a>
-                {% endif %}
+                </p>
+              {% endif %}
 
-                {% if settings.social_twitter != blank %}
-                  <a
-                    class="footer-social-icon"
-                    href="{{ settings.social_twitter }}"
-                    {% if block.settings.open_new_tab %}
-                      target="_blank" rel="noopener"
-                    {% endif %}
-                    aria-label="Twitter"
-                  >
-                    Twitter
-                  </a>
-                {% endif %}
-
-                {% if settings.social_youtube != blank %}
-                  <a
-                    class="footer-social-icon"
-                    href="{{ settings.social_youtube }}"
-                    {% if block.settings.open_new_tab %}
-                      target="_blank" rel="noopener"
-                    {% endif %}
-                    aria-label="YouTube"
-                  >
-                    YouTube
-                  </a>
-                {% endif %}
-              </div>
+              {% if block.settings.contact_address != blank %}
+                <p class="footer-contact-item">
+                  <span>Address:</span><br>
+                  {{ block.settings.contact_address }}
+                </p>
+              {% endif %}
             </div>
+
+          {% when 'social-icons' %}
+            {%- assign facebook_url = block.settings.social_facebook_url | default: 'Facebook' -%}
+            {%- assign instagram_url = block.settings.social_instagram_url | default: 'instagram' -%}
+            {%- assign twitter_url = block.settings.social_twitter_url | default: 'twitter' -%}
+            {%- assign youtube_url = block.settings.social_youtube_url | default: 'Youtube' -%}
+
+            {% assign has_social = false %}
+            {% if facebook_url != blank or instagram_url != blank or twitter_url != blank or youtube_url != blank %}
+              {% assign has_social = true %}
+            {% endif %}
+
+            {% if has_social %}
+              <div class="footer-social-icons">
+                {% if block.settings.social_heading != blank %}
+                  <h3 class="footer-social-heading rte">
+                    {{ block.settings.social_heading }}
+                  </h3>
+                {% endif %}
+
+                {% if block.settings.open_new_tab %}
+                  {% assign link_target = '_blank' %}
+                  {% assign link_rel = 'noopener noreferrer' %}
+                {% else %}
+                  {% assign link_target = '' %}
+                  {% assign link_rel = '' %}
+                {% endif %}
+
+                <div class="footer-social-icons-list">
+                  {% if facebook_url != blank %}
+                    <a
+                      class="footer-social-icon facebook"
+                      href="{{ facebook_url }}"
+                      {% if link_target != blank %}
+                        target="{{ link_target }}" rel="{{ link_rel }}"
+                      {% endif %}
+                      aria-label="Facebook"
+                    >
+                     {%- render 'icon.facebook' -%}
+                    <span class="visual-hidden">{{ 'general.social.facebook' | t }}</span>
+                    </a>
+                  {% endif %}
+
+                  {% if instagram_url != blank %}
+                    <a
+                      class="footer-social-icon instagram"
+                      href="{{ instagram_url }}"
+                      {% if link_target != blank %}
+                        target="{{ link_target }}" rel="{{ link_rel }}"
+                      {% endif %}
+                      aria-label="Instagram"
+                    >
+                    {%- render 'icon.instagram' -%}
+                    <span class="visual-hidden">{{ 'general.social.instagram' | t }}</span>
+                    </a>
+                  {% endif %}
+
+                  {% if twitter_url != blank %}
+                    <a
+                      class="footer-social-icon twitter"
+                      href="{{ twitter_url }}"
+                      {% if link_target != blank %}
+                        target="{{ link_target }}" rel="{{ link_rel }}"
+                      {% endif %}
+                      aria-label="Twitter"
+                    >
+                      {%- render 'icon.twitter' -%}
+                    <span class="visual-hidden">{{ 'general.social.twitter' | t }}</span>
+                    </a>
+                  {% endif %}
+
+                  {% if youtube_url != blank %}
+                    <a
+                      class="footer-social-icon youtube"
+                      href="{{ youtube_url }}"
+                      {% if link_target != blank %}
+                        target="{{ link_target }}" rel="{{ link_rel }}"
+                      {% endif %}
+                      aria-label="YouTube"
+                    >
+                      {%- render 'icon.youtube' -%}
+                    <span class="visual-hidden">{{ 'general.social.youtube' | t }}</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
         {% endcase %}
       </div>
     {% endfor %}
@@ -144,9 +227,61 @@
 {% schema %}
 {
   "name": "Footer",
-  "max_blocks": 6,
+  "max_blocks": 5,
   "settings": [],
   "blocks": [
+    {
+      "type": "footer-logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_brand_title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "richtext",
+          "id": "footer_brand_description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "social_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open links in new tab",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "social_facebook_url",
+          "label": "t:social-media.social_facebook_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_instagram_url",
+          "label": "t:social-media.social_instagram_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_twitter_url",
+          "label": "t:social-media.social_twitter_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_youtube_url",
+          "label": "t:social-media.social_youtube_link.label"
+        }
+      ]
+    },
     {
       "type": "footer-menu",
       "name": "Menu",
@@ -168,45 +303,75 @@
         }
       ]
     },
-      {
-      "type": "footer-logo",
-      "name": "logo",
+    {
+      "type": "social-icons",
+      "name": "Social Icons",
       "settings": [
         {
           "type": "text",
-          "id": "footer_brand_title",
-          "label": "Title"
+          "id": "social_heading",
+          "label": "Heading"
         },
         {
-          "type": "image_picker",
-          "id": "footer_logo",
-          "label": "Logo"
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open links in new tab",
+          "default": true
         },
         {
-          "type": "richtext",
-          "id": "footer_brand_description",
-          "label": "Description"
+          "type": "url",
+          "id": "social_facebook_url",
+          "label": "t:social-media.social_facebook_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_instagram_url",
+          "label": "t:social-media.social_instagram_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_twitter_url",
+          "label": "t:social-media.social_twitter_link.label"
+        },
+        {
+          "type": "url",
+          "id": "social_youtube_url",
+          "label": "t:social-media.social_youtube_link.label"
         }
       ]
     },
     {
-    "type": "social-icons",
-    "name": "Social Icons",
-    "settings":    [
-     {
-      "type": "text",
-      "id": "social_heading",
-      "label": "Heading",
-      "default": "Follow us"
-    },
-    {
-      "type": "checkbox",
-      "id": "open_new_tab",
-      "label": "Open links in new tab",
-      "default": true
-    }
-        ]
+      "type": "footer-contact-info",
+      "name": "Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "contact_heading",
+          "label": "Heading",
+          "default": "Information"
+        },
+        {
+          "type": "text",
+          "id": "contact_name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "contact_phone",
+          "label": "Phone"
+        },
+        {
+          "type": "text",
+          "id": "contact_email",
+          "label": "Email"
+        },
+        {
+          "type": "textarea",
+          "id": "contact_address",
+          "label": "Address"
         }
+      ]
+    }
   ],
   "presets": [
     {
