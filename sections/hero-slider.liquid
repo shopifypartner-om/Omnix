@@ -12,9 +12,9 @@
           {%- if block.settings.image != blank -%}
             <img src="{{ block.settings.image | image_url: width: 2000 }}" class="desktop-only" alt="{{ block.settings.heading }}" width="1920" height="650" loading="eager">
           {%- endif -%}
-          {%- if block.settings.image_mobile != blank -%}
+          {%- if block.settings.image_mobile -%}
             <img src="{{ block.settings.image_mobile | image_url: width: 800 }}" class="mobile-only" alt="{{ block.settings.heading }}" width="414" height="500" loading="eager">
-          {%- else -%}
+          {%- elsif block.settings.image != blank -%}
             <img src="{{ block.settings.image | image_url: width: 800 }}" class="mobile-only" alt="{{ block.settings.heading }}" width="414" height="500" loading="eager">
           {%- endif -%}
         </div>
