@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "primary_color": "#ef5523",
     "layout_type": "boxed",
     "page_width": 1400,
     "sections": {
