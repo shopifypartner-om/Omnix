@@ -1,10 +1,10 @@
 {{ 'mobile-menu.css' | asset_url | stylesheet_tag }}
 
-<header class="site-header header--{{ section.settings.logo_position }}">
+<header class="site-header header--{{ section.settings.logo_position }}" data-sticky="{{ section.settings.sticky_header }}">
   <div class="header-grid page-width">
     
     <div class="header-mobile-drawer">
-      <button type="button" class="icon-button" id="menu-open" aria-label="Menu">
+      <button type="button" class="icon-button" id="menu-open" aria-label="Menu" onclick="openDrawer()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
@@ -104,6 +104,16 @@
       "id": "cart_text",
       "label": "Cart Text (leave blank for icon only)",
       "default": "Cart"
+    },
+    {
+      "type": "header",
+      "content": "Header Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Make Header Sticky",
+      "default": false
     }
   ]
 }

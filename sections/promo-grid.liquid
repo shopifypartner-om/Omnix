@@ -1,0 +1,101 @@
+
+ {{ 'promo-grid.css' | asset_url | stylesheet_tag: preload: true }}
+
+<div class="promo-grid-section page-width" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="promo-grid-container">
+    {% for block in section.blocks %}
+      <div class="promo-item">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.heading }}" loading="lazy" class="promo-bg-img">
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+
+        <div class="promo-content-wrapper">
+          <div class="promo-content-box">
+            <h3 class="promo-heading">{{ block.settings.heading }}</h3>
+            <p class="promo-text">{{ block.settings.subheading }}</p>
+          </div>
+          <div class="promo-bottom-bar"></div>
+        </div>
+        
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" class="promo-link-overlay"></a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo Grid",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Promo Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop Women"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Lorem ipsum dolor sit"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Grid",
+      "blocks": [
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" }
+      ]
+    }
+  ]
+}
+{% endschema %}
