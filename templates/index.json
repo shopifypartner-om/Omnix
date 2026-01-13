@@ -9,12 +9,120 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "hero_slider_nNHBYD": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_Ba7BiC": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/venia-hero1.webp",
+            "image_mobile": "shopify://shop_images/download_3.png",
+            "heading": "Shop the New Outerwear Collection",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "button_text": "SHOP NOW",
+            "button_link": ""
+          }
+        },
+        "slide_fRj6q3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/venia-hero2.webp",
+            "image_mobile": "shopify://shop_images/download_4.png",
+            "heading": "Shop the New Outerwear Collection",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "button_text": "SHOP NOW",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Ba7BiC",
+        "slide_fRj6q3"
+      ],
+      "name": "Hero Slider",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "promo_grid_y6dWBT": {
+      "type": "promo-grid",
+      "blocks": {
+        "column_JT3P3b": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shallow-focus-photography-of-man-wearing-eyeglasses-837306_sm.webp",
+            "heading": "Shop Women",
+            "subheading": "Lorem ipsum dolor sit",
+            "link": ""
+          }
+        },
+        "column_kBtdrb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_189473898_sm.webp",
+            "heading": "Shop Women",
+            "subheading": "Lorem ipsum dolor sit",
+            "link": ""
+          }
+        },
+        "column_9NbkFw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/round-gold-colored-analog-watch-with-pink-leather-strap-on-1162519_sm.webp",
+            "heading": "Shop Women",
+            "subheading": "Lorem ipsum dolor sit",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_JT3P3b",
+        "column_kBtdrb",
+        "column_9NbkFw"
+      ],
+      "name": "Promo Grid",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "imagewithtext_TEnea6": {
+      "type": "imagewithtext",
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/AdobeStock_268178800_sm.webp",
+        "heading": "Make a Statement in Signature Heels",
+        "subheading": "Lorem Ipsum Dolor Tempor",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor labore dolore magna lorem ipsum dolor sit dolore magna lorem ipsum dolor sit amet",
+        "btn_1_text": "Shop Heels",
+        "btn_1_link": "",
+        "btn_2_text": "Shop All Shoes",
+        "btn_2_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "imagewithtext_box_Y9A3Cf": {
+      "type": "imagewithtext-box",
+      "name": "img-with-text-box",
+      "settings": {
+        "image": "shopify://shop_images/woman-wearing-orange-dress-3503488_sm.webp",
+        "heading": "Vacations meet fresh style",
+        "subheading": "Lorem Ipsum Dolor Tempor",
+        "button_label": "SHOP SUMMER",
+        "button_link": "",
+        "bg_color": "#1c252c",
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "hero_slider_nNHBYD",
+    "promo_grid_y6dWBT",
+    "imagewithtext_TEnea6",
+    "imagewithtext_box_Y9A3Cf"
   ]
 }

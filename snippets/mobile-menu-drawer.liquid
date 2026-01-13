@@ -1,5 +1,12 @@
 <style>
-  /* Drawer Styling */
+  @media screen and (min-width: 768px) {
+    .menu-drawer-wrapper {
+      display: none;
+    }
+}
+  nav.drawer-nav ul{
+    padding: 0;
+  }
   .menu-drawer-wrapper {
     position: fixed;
     top: 0;
@@ -47,15 +54,22 @@
     left: 0;
   }
 
-  /* Header inside drawer */
+ 
   .drawer-header {
-    padding: 20px;
+    padding: 15px;
     border-bottom: 1px solid #eee;
     display: flex;
-    justify-content: flex-end;
+      justify-content: space-between;
+    align-items: center;
   }
+  .drawer-header{
+    font-size: 18px;
+  }
+  span.menu-title {
+    margin-right: 50%;
+}
 
-  /* Navigation Links */
+  
   .drawer-nav { padding: 10px 0; }
   .drawer-nav-item { list-style: none; }
 
@@ -66,13 +80,13 @@
     padding: 15px 25px;
     text-decoration: none;
     color: #333;
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 500;
     border-bottom: 1px solid #f9f9f9;
     cursor: pointer;
   }
 
-  /* Submenus */
+
   .drawer-submenu {
     display: none;
     background: #fcfcfc;
@@ -84,19 +98,19 @@
     display: block;
   }
 
-  .drawer-icon-caret {
-    width: 12px;
+  .icon-caret {
+    width: 10px;
+    height: 6px;
     transition: transform 0.3s;
   }
 
-  .drawer-nav-item.open > .drawer-link .drawer-icon-caret {
+  .drawer-nav-item.open > .drawer-link .icon-caret {
     transform: rotate(180deg);
   }
 
-  /* Utility Links (Account/Social) */
+ 
   .drawer-footer {
     margin-top: auto;
-    padding: 20px 25px;
     background: #f5f5f5;
   }
 
@@ -104,7 +118,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+   padding: 20px;
     text-decoration: none;
     color: #333;
   }
@@ -123,6 +137,7 @@
   <div class="menu-drawer-content">
     <div class="drawer-header">
       <button onclick="closeDrawer()" style="background:none; border:none; font-size: 30px;">&times;</button>
+      <span class="menu-title">Main Menu</span>
     </div>
 
     <nav class="drawer-nav">
@@ -132,27 +147,27 @@
             {%- if link.links != blank -%}
               <div class="drawer-link" onclick="toggleSubmenu(this)">
                 <span>{{ link.title | escape }}</span>
-                <svg class="drawer-icon-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
+                   <svg class="icon-caret" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
               </div>
               <ul class="drawer-submenu">
                 {%- for childlink in link.links -%}
                   <li class="drawer-nav-item">
                     {%- if childlink.links != blank -%}
-                      <div class="drawer-link" onclick="toggleSubmenu(this)" style="font-size: 1.4rem;">
+                      <div class="drawer-link" onclick="toggleSubmenu(this)">
                         <span>{{ childlink.title | escape }}</span>
-                        <svg class="drawer-icon-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
+                           <svg class="icon-caret" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"/></svg>
                       </div>
                       <ul class="drawer-submenu">
                         {%- for grandchildlink in childlink.links -%}
                           <li>
-                            <a href="{{ grandchildlink.url }}" class="drawer-link" style="font-size: 1.3rem; padding-left: 40px;">
+                            <a href="{{ grandchildlink.url }}" class="drawer-link">
                               {{ grandchildlink.title | escape }}
                             </a>
                           </li>
                         {%- endfor -%}
                       </ul>
                     {%- else -%}
-                      <a href="{{ childlink.url }}" class="drawer-link" style="font-size: 1.4rem;">{{ childlink.title | escape }}</a>
+                      <a href="{{ childlink.url }}" class="drawer-link">{{ childlink.title | escape }}</a>
                     {%- endif -%}
                   </li>
                 {%- endfor -%}

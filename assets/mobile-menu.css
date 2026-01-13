@@ -167,12 +167,10 @@
 }
 
 @media screen and (max-width: 480px) {
-  .a.icon-link.account-pc {
-    display: none;
-  }
+ 
   .header-grid {
     gap: 10px;
-    display: flex;
+    display: grid;
     justify-content: space-between;
   }
 
@@ -219,4 +217,8 @@
   border-bottom: 1px solid #eee;
   text-decoration: none;
   color: #000;
+}
+
+.header-logo{
+  width: fit-content;
 }
