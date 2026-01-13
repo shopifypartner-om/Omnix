@@ -43,6 +43,14 @@
     --buttons-shadow-x: {{ settings.buttons_shadow_horizontal_offset | default: 0 }}px;
     --buttons-shadow-y: {{ settings.buttons_shadow_vertical_offset | default: 0 }}px;
     --buttons-shadow-blur: {{ settings.buttons_shadow_blur | default: 0 }}px;
+    
+    /** * Add to Cart Button **/
+    --atc-bg: {{ settings.atc_bg_color | default: "#000000" }};
+    --atc-bg-hover: {{ settings.atc_bg_hover_color | default: "#333333" }};
+    --atc-text: {{ settings.atc_text_color | default: "#ffffff" }};
+    --atc-border: {{ settings.atc_border_color | default: "#000000" }};
+    --atc-border-width: {{ settings.atc_border_width | default: 1 }}px;
+    --atc-radius: {{ settings.atc_border_radius | default: 0 }}px;
 
     /** * Inputs **/
     --inputs-border-thickness: {{ settings.inputs_border_thickness | default: 1 }}px;
