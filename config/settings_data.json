@@ -16,18 +16,26 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer_logo_Vt8dxE": {
+          "footer_logo_TTqyJ3": {
             "type": "footer-logo",
             "settings": {
-              "footer_brand_title": "OM",
-              "footer_logo": "shopify://shop_images/New_Project_17_1_2b03b365-2366-412f-b929-6731e2088da5.png",
+              "footer_brand_title": "",
               "footer_brand_description": "",
               "social_heading": "Follow us",
+              "social_description": "<p>Lorem ipsum dolor sit amet, consectetur adipsicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>",
               "open_new_tab": true,
               "social_facebook_url": "#",
               "social_instagram_url": "#",
-              "social_twitter_url": "",
+              "social_twitter_url": "#",
               "social_youtube_url": ""
+            }
+          },
+          "footer_menu_G9maX6": {
+            "type": "footer-menu",
+            "settings": {
+              "footer_menu_heading": "Account",
+              "footer_menu_subheading": "",
+              "footer_menu_select": "main-menu-1"
             }
           },
           "footer_menu_dPjNx8": {
@@ -46,24 +54,35 @@
               "footer_menu_select": "customer-account-main-menu"
             }
           },
-          "footer_contact_info_X6PrFH": {
-            "type": "footer-contact-info",
+          "newsletter_hkAmFi": {
+            "type": "newsletter",
             "settings": {
-              "contact_heading": "Information",
-              "contact_name": "OMnix",
-              "contact_phone": "+91 9876678981",
-              "contact_email": "info@omnix.com",
-              "contact_address": "sector 48 Grurgram, 122001"
+              "newsletter_heading": "Subscribe to OMNIX",
+              "newsletter_text": "Receive the latest news, updates and special offers right to your inbox.",
+              "newsletter_placeholder": "Enter your email",
+              "newsletter_button_label": "Subscribe",
+              "newsletter_success_message": "Thanks for subscribing!"
             }
           }
         },
         "block_order": [
-          "footer_logo_Vt8dxE",
+          "footer_logo_TTqyJ3",
+          "footer_menu_G9maX6",
           "footer_menu_dPjNx8",
           "footer_menu_MGmWDi",
-          "footer_contact_info_X6PrFH"
+          "newsletter_hkAmFi"
         ],
-        "settings": {}
+        "settings": {
+          "background_color": "#ffffff",
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "margin_top": 0,
+          "margin_bottom": 0,
+          "lower_heading": "My Store",
+          "lower_copyright": "© 2026 All rights reserved,",
+          "lower_author": "Omnnix",
+          "lower_menu": "customer-account-main-menu"
+        }
       }
     },
     "content_for_index": []
