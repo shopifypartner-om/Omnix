@@ -5,10 +5,16 @@
   font-family: var(--font-primary--family);
   padding: 48px 0;
   margin-top: 20px;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
 }
-
+footer.main-footer{
+  display: flex;
+  flex-direction: column;
+}
+footer.footer.template-footer.upper-footer{
+  width: 100%;
+}
 .footer {
   background-color: var(--footer-bg);
   padding-top: var(--footer-padding-top);
@@ -21,14 +27,78 @@
   background-position: center;
 }
 
-.footer__container {
-   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: clamp(32px, 4vw, 64px);
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding: 0 var(--page-margin);
+.lower-footer {
+  padding-top: var(--lower-padding-top);
+  padding-bottom: var(--lower-padding-bottom);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  /* position: fixed;
+  bottom: 0; */
 }
+
+.lower-footer a {
+  color: rgb(var(--color-link));
+}
+.copyright-section-footer.lower-footer{
+  width: 100%;
+  padding: 20px auto;
+  background-color: var(--footer-bg);
+}
+.lower-footer-inner.page-width {
+    display: flex;
+    align-items: center;
+    gap: 15%;
+    justify-content: center;
+   border-top: 2px solid gainsboro;
+   max-width: 100%;
+    padding: 20px 0;
+}
+.lower-footer-block.lower-footer-copyright{
+  display: flex;
+  gap: 5px;
+}
+.lower-footer-block ul.footer-menu{
+      text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+}
+ 
+.footer__container {
+     display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 32px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+@media (max-width: 465px) {
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 16px;
+  }
+}
+@media (min-width: 465px) and (max-width: 992px) {
+  .footer__container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 0 24px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .footer__container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 0 24px;
+  }
+}
+
 
 .footer-block-add-menu {
   /* align-items: center; */
@@ -74,8 +144,13 @@
 
 
 .footer-brand-social {
-  display: flex;
+  display: block;
   gap: 16px;
+}
+.social-url-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
 }
 /* 
 .footer-social-link {
@@ -108,11 +183,19 @@
 }
 
 .footer__link-item a {
-  font-size: 14px;
+  font-size: 16px;
   color: black;
   opacity: 0.7;
   text-decoration: none;
   transition: opacity 0.3s ease;
+}
+.footer-brand-block h3.footer-social-heading.rte p{
+  font-size: 12px;
+    font-weight: 400;
+    color: grey;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    padding-bottom: 10px;
 }
 
 .footer__link-item a:hover {
@@ -143,14 +226,7 @@
   opacity: 1;
 } */
 
-.footer__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+
 /* @media (max-width: 1024px) {
   .footer__container {
     gap: 80px;
@@ -170,7 +246,7 @@
 
 .footer-brand-social,
 .footer-social-icons-list {
-  display: flex;
+  display: block;
   gap: 16px;
 }
 
@@ -225,4 +301,49 @@
 
 .footer a:hover {
   opacity: 1;
+}
+
+
+.newsletter__form {
+    display: flex;
+    border: 2px solid black;
+    padding: 3px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin: 15px 3px;
+}
+
+.newsletter__form input[type="email"] {
+    border: none;
+    padding: 10px;
+}
+.newsletter__form button.newsletter-button-subscribe {
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-weight: 500;
+
+
+}
+.newsletter__text{
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
+.newsletter__form input[type=email]:focus-visible{
+      background: none;
+    border: none;
+    outline: none;
+   
+}
+
+@media (min-width: 1920px) {
+  .footer__container {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1600px; /* adjust if needed */
+    gap: 40px; /* keeps spacing clean */
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }

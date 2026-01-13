@@ -1,0 +1,44 @@
+<div class="newsletter">
+
+  {% if block.settings.newsletter_heading != blank %}
+    <h2 class="newsletter__heading">
+      {{ block.settings.newsletter_heading }}
+    </h2>
+  {% endif %}
+
+  {% if block.settings.newsletter_text != blank %}
+    <p class="newsletter__text">
+      {{ block.settings.newsletter_text }}
+    </p>
+  {% endif %}
+
+  {% form 'customer', id: 'FooterNewsletterForm' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+    <div class="newsletter__form">
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="{{ block.settings.newsletter_placeholder }}"
+        required
+      >
+
+      <button type="submit" class="newsletter-button-subscribe">
+        {{ block.settings.newsletter_button_label }}
+      </button>
+    </div>
+
+    {% if form.posted_successfully? %}
+      <p class="newsletter__success">
+        {{ block.settings.newsletter_success_message }}
+      </p>
+    {% endif %}
+
+    {% if form.errors %}
+      <p class="newsletter__error">
+        {{ form.errors | default_errors }}
+      </p>
+    {% endif %}
+  {% endform %}
+
+</div>
