@@ -103,5 +103,55 @@
         "default": 4
       }
     ]
-  }
+  },
+  {
+  "name": "Add to Cart Button",
+  "settings": [
+    {
+      "type": "color",
+      "id": "atc_bg_color",
+      "label": "Button background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg_hover_color",
+      "label": "Button background hover color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "atc_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "atc_border_color",
+      "label": "Button border color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "atc_border_width",
+      "label": "Button border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "atc_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ]
+}
+
 ]
